@@ -10,6 +10,8 @@ from tkinter import messagebox
 
 Tk().withdraw()
 file_path = filedialog.askopenfilename()
+if not file_path:
+    exit()
 sheet = ""
 frame = Tk()
 
@@ -43,10 +45,15 @@ def get_sheet():
     frame.destroy()
     exit()
 
+def on_closing():
+    if messagebox.askokcancel("Quit", "Do you want to quit?"):
+        frame.destroy()
+        exit()
 
 frame.title("Name of Sheet")
 frame.geometry('200x150')
 frame.eval('tk::PlaceWindow . center')
+frame.protocol("WM_DELETE_WINDOW", on_closing)
 
 infolbl = Label(frame,text="INFO: Dates must have the form \n dd/mm/yyyy")
 infolbl.place(x=0,y=70)
