@@ -1,0 +1,4 @@
+ethiopian_date==1.0
+pyexcel==0.7.0
+pyperclip==1.8.2
+openpyxl==3.0.10
